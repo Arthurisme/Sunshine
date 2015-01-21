@@ -99,7 +99,7 @@ public class MainActivity extends ActionBarActivity {
             //attach this adapter to it, it is using an adapter, because listview is a list, not one element.
 
             listView.setAdapter(forecastAdapter);
-//1.061//1.062//1.063//1.064   65 67 68 69 70
+//1.061//1.062//1.063//1.064   65 67 68 69 70 71
 
 
             return rootView;
