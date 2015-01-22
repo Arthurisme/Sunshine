@@ -1,15 +1,14 @@
 package com.example.android.sunshine;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
+
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -24,6 +23,13 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //    //Make sure you're using compile 'com.android.support:appcompat-v7:20.0.0' in your app/build.gradle otherwise the Material theme is applied and it doesn't have icon by default.
+        //using floowing 3 lines to show app icon.
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -45,12 +51,9 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -65,7 +68,6 @@ public class MainActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
             // Create some dummy data for the ListView.  Here's a sample weekly forecast
             String[] data = {
@@ -77,30 +79,23 @@ public class MainActivity extends ActionBarActivity {
                     "Sat 6/28 - TRAPPED IN WEATHERSTATION - 23/18",
                     "Sun 6/29 - Sunny - 20/7"
             };
-            ArrayList<String> weekForecast = new ArrayList<String>(Arrays.asList(data));
+            List<String> weekForecast = new ArrayList<String>(Arrays.asList(data));
 
-           //array adapter:
-            ArrayAdapter forecastAdapter=new ArrayAdapter<String>(
+            // Now that we have some dummy forecast data, create an ArrayAdapter.
+            // The ArrayAdapter will take data from a source (like our dummy forecast) and
+            // use it to populate the ListView it's attached to.
+            ArrayAdapter<String> forecastAdapter =
+                    new ArrayAdapter<String>(
+                            getActivity(), // The current context (this activity)
+                            R.layout.list_item_forecast, // The name of the layout ID.
+                            R.id.list_item_forecast_textview, // The ID of the textview to populate.
+                            weekForecast);
 
-                getActivity(),
-
-                R.layout.list_item_forecast,
-                    R.id.list_item_forecast_textview,
-                weekForecast
-            );
-
-
-
-
+            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
             // Get a reference to the ListView, and attach this adapter to it.
-           // ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
-            ListView listView = (ListView)rootView.findViewById(R.id.listview_forecast);
-            //attach this adapter to it, it is using an adapter, because listview is a list, not one element.
-
+            ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
             listView.setAdapter(forecastAdapter);
-//1.061//1.062//1.063//1.064   65 67 68 69 70 71
-
 
             return rootView;
         }
