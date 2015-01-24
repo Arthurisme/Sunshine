@@ -7,5 +7,7 @@
     <string name="list_item_forecast_textview">forecast text</string>
     <string name="action_refresh" translatable="false">Refresh</string>
     <string name="title_activity_main_activity2">MainActivity2</string>
+    <string name="title_activity_detail">DetailActivity</string>
 
+    <string name="text2">t2</string>
 </resources>
