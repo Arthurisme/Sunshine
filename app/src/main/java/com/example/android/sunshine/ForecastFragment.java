@@ -26,8 +26,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -113,6 +115,20 @@ public class ForecastFragment extends Fragment {
         ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
         listView.setAdapter(mForecastAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+                String forecast=mForecastAdapter.getItem(position);
+                Toast.makeText(getActivity(),forecast,Toast.LENGTH_SHORT).show();
+
+
+
+
+            }
+        });
+
         return rootView;
     }
 
@@ -123,7 +139,7 @@ public class ForecastFragment extends Fragment {
         /* The date/time conversion code is going to be moved outside the asynctask later,
          * so for convenience we're breaking it out into its own method now.
          */
-        private String getReadableDateString(long time){
+        private String getReadableDateString(long time) {
             // Because the API returns a unix timestamp (measured in seconds),
             // it must be converted to milliseconds in order to be converted to valid date.
             Date date = new Date(time * 1000);
@@ -143,10 +159,23 @@ public class ForecastFragment extends Fragment {
             return highLowStr;
         }
 
+        private String[] getStringArraySample() throws JSONException {
+            String[] newarray = {
+                    "1111111111",
+                    "22222222222222222",
+                    "333333333333333333333",
+                    "4444444444444444444444444444",
+                    "5555555555555555555555555555555555",
+                    "6666666666666666666666666666666666666666",
+                    "777777777777777777777777777777777777777777777777"
+            };
+            return newarray;
+        }
+
         /**
          * Take the String representing the complete forecast in JSON Format and
          * pull out the data we need to construct the Strings needed for the wireframes.
-         *
+         * <p/>
          * Fortunately parsing is easy:  constructor takes the JSON string and converts it
          * into an Object hierarchy for us.
          */
@@ -166,7 +195,7 @@ public class ForecastFragment extends Fragment {
             JSONArray weatherArray = forecastJson.getJSONArray(OWM_LIST);
 
             String[] resultStrs = new String[numDays];
-            for(int i = 0; i < weatherArray.length(); i++) {
+            for (int i = 0; i < weatherArray.length(); i++) {
                 // For now, using the format "Day, description, hi/low"
                 String day;
                 String description;
@@ -197,6 +226,7 @@ public class ForecastFragment extends Fragment {
             return resultStrs;
 
         }
+
         @Override
         protected String[] doInBackground(String... params) {
 
@@ -264,6 +294,9 @@ public class ForecastFragment extends Fragment {
                     return null;
                 }
                 forecastJsonStr = buffer.toString();
+
+                //try to get the format of forecastJsonStr: it is the jason file we get from cloud
+                Log.v(LOG_TAG, "2308 " + forecastJsonStr);
             } catch (IOException e) {
                 Log.e(LOG_TAG, "Error ", e);
                 // If the code didn't successfully get the weather data, there's no point in attemping
@@ -283,7 +316,12 @@ public class ForecastFragment extends Fragment {
             }
 
             try {
+                //using this line to show the data from cloud:(which is a String[])
                 return getWeatherDataFromJson(forecastJsonStr, numDays);
+                //try: to using sample string[]:
+                //return getStringArraySample();
+
+
             } catch (JSONException e) {
                 Log.e(LOG_TAG, e.getMessage(), e);
                 e.printStackTrace();
@@ -295,13 +333,27 @@ public class ForecastFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String[] result) {
+
+
             if (result != null) {
                 mForecastAdapter.clear();
-                for(String dayForecastStr : result) {
+                //dayForecastStr is a string in the format of " Sat, Jan 24 - Clear - 23/4 "
+
+                for (String dayForecastStr : result) {
                     mForecastAdapter.add(dayForecastStr);
+                    //try add a line between two weatherlistitem:
+                    //mForecastAdapter.add("-----------------------");
+                    //try
+                    System.out.println("2307" + dayForecastStr);
+                    Log.v(LOG_TAG, "2307 " + dayForecastStr);
+
                 }
                 // New data is back from the server.  Hooray!
             }
+
+            //try add a line between two weatherlistitem:
+            //mForecastAdapter.add("-----------------------");
+
         }
     }
 }
