@@ -1,5 +1,6 @@
 package com.example.android.sunshine;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 public class DetailActivity extends ActionBarActivity {
@@ -16,6 +18,11 @@ public class DetailActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -40,6 +47,8 @@ public class DetailActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+             Intent intent=new Intent(this,SettingsActivity.class);
+             startActivity(intent);
             return true;
         }
 
@@ -57,7 +66,31 @@ public class DetailActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+
+
+
+
+
+
             View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
+
+             //set forecast data to DetailActivity.class and show:
+            //DetailActivity.
+            Intent intent=getActivity().getIntent();
+
+
+
+            if(intent!=null && intent.hasExtra(intent.EXTRA_TEXT)) {
+                String forecastTry = intent.getStringExtra(intent.EXTRA_TEXT);
+                TextView txtView = (TextView) rootView.findViewById(R.id.detail_text);
+                //txtwidth = (TextView)findViewById(R.id.viewwidth);
+                txtView.setText(forecastTry);
+
+            }
+
+
+
+
             return rootView;
         }
     }

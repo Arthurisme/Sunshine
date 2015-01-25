@@ -77,6 +77,7 @@ public class ForecastFragment extends Fragment {
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
             FetchWeatherTask weatherTask = new FetchWeatherTask();
+
             weatherTask.execute("94043");
             return true;
         }
@@ -130,7 +131,6 @@ public class ForecastFragment extends Fragment {
 
                 startActivity(intent);
 
-
             }
         });
 
@@ -164,6 +164,7 @@ public class ForecastFragment extends Fragment {
             return highLowStr;
         }
 
+        //try a string[]:
         private String[] getStringArraySample() throws JSONException {
             String[] newarray = {
                     "1111111111",
@@ -302,6 +303,7 @@ public class ForecastFragment extends Fragment {
 
                 //try to get the format of forecastJsonStr: it is the jason file we get from cloud
                 Log.v(LOG_TAG, "2308 " + forecastJsonStr);
+                Log.v("2308a", "2308a");
             } catch (IOException e) {
                 Log.e(LOG_TAG, "Error ", e);
                 // If the code didn't successfully get the weather data, there's no point in attemping
