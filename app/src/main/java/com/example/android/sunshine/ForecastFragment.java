@@ -72,15 +72,16 @@ public class ForecastFragment extends Fragment {
     }
 
     //updateweather infor:
-    private void upDateWeather(){
+    private void upDateWeather() {
         FetchWeatherTask weatherTask = new FetchWeatherTask();
-        SharedPreferences prefs= PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String location=prefs.getString(getString(R.string.pref_location_key),getString(R.string.pref_location_default));
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String location = prefs.getString(getString(R.string.pref_location_key), getString(R.string.pref_location_default));
+        //String unitst=prefs.getString(getString(R.string.pref_units_key),getString(R.string.pref_units_metric));
         weatherTask.execute(location);
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
         upDateWeather();
 
@@ -97,6 +98,7 @@ public class ForecastFragment extends Fragment {
             upDateWeather();
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -153,6 +155,7 @@ public class ForecastFragment extends Fragment {
         return rootView;
     }
 
+
     public class FetchWeatherTask extends AsyncTask<String, Void, String[]> {
 
         private final String LOG_TAG = FetchWeatherTask.class.getSimpleName();
@@ -173,11 +176,24 @@ public class ForecastFragment extends Fragment {
          */
         private String formatHighLows(double high, double low) {
             // For presentation, assume the user doesn't care about tenths of a degree.
+
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            //String units=prefs.getString(getString(R.string.pref_units_key),getString(R.string.pref_location_default));
+            String unitType = prefs.getString(getString(R.string.pref_units_key), getString(R.string.pref_units_metric));
+
+            if (unitType.equals(getString(R.string.pref_units_imperial))) {
+                high = (high * 1.8) + 32;
+
+                low = (low * 1.8) + 32;
+            }
+
+
             long roundedHigh = Math.round(high);
             long roundedLow = Math.round(low);
 
             String highLowStr = roundedHigh + "/" + roundedLow;
             return highLowStr;
+
         }
 
         //try a string[]:

@@ -28,7 +28,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -49,7 +48,7 @@ public class DetailActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_detail, menu);
+        getMenuInflater().inflate(R.menu.detail, menu);
         return true;
     }
 
@@ -93,16 +92,6 @@ public class DetailActivity extends ActionBarActivity {
                         .setText(mForecastStr);
             }
 
-            //------->button to test sharing
-            Button b = (Button)rootView.findViewById(R.id.button);
-            b.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent i = createShareForecastIntent();
-                    startActivity(i);
-                }
-            });
-
             return rootView;
         }
 
@@ -125,7 +114,6 @@ public class DetailActivity extends ActionBarActivity {
             } else {
                 Log.d(LOG_TAG, "Share Action Provider is null?");
             }
-            //super.onCreateOptionsMenu(menu, inflater);
         }
 
         private Intent createShareForecastIntent() {
