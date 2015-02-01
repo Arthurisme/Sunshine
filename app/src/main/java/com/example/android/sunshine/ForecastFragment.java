@@ -106,6 +106,9 @@ public class ForecastFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
+
+
         // Create some dummy data for the ListView.  Here's a sample weekly forecast
         String[] data = {
                 "Mon 6/23 - Sunny - 31/17",
@@ -386,6 +389,7 @@ public class ForecastFragment extends Fragment {
                     //try
                     System.out.println("2307" + dayForecastStr);
                     Log.v(LOG_TAG, "2307 " + dayForecastStr);
+                    Log.v(LOG_TAG, "2307b " + result);
 
                 }
                 // New data is back from the server.  Hooray!

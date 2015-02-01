@@ -22,6 +22,8 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
 
+
+
         //    //Make sure you're using compile 'com.android.support:appcompat-v7:20.0.0' in your app/build.gradle otherwise the Material theme is applied and it doesn't have icon by default.
         //using floowing 3 lines to show app icon.
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -89,6 +91,8 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+
+           // Intent intenttry = getActivity().getIntent();
 
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);

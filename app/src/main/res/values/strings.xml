@@ -12,6 +12,7 @@
     <string name="action_share">Share</string>
 
     <string name="text2">t2</string>
+    <string name="button_share_test">Share button Testing</string>>
 
     <!-- Label for the location preference [CHAR LIMIT=30] -->
     <string name="pref_location_label">Location</string>

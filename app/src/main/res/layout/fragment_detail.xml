@@ -17,12 +17,55 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
+        android:text="@string/button_share_test"
+        android:id="@+id/button_share_test"
         android:layout_below="@+id/detail_text"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="91dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="click show &quot;ok&quot;"
+        android:id="@+id/button_click_show_ok_test"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/button_share_test"
+        android:layout_alignStart="@+id/button_share_test"
+        android:layout_alignRight="@+id/button_share_test"
+        android:layout_alignEnd="@+id/button_share_test" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="show here"
+        android:id="@+id/button_show_here_test"
+        android:layout_below="@+id/button_click_show_ok_test"
+        android:layout_alignLeft="@+id/button_click_show_ok_test"
+        android:layout_alignStart="@+id/button_click_show_ok_test" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_show_here_test"
+        android:layout_below="@+id/button_show_here_test"
+        android:text="showing"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/button_click_show_ok_test"
+        android:layout_alignEnd="@+id/button_click_show_ok_test" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_input_output_test"
+        android:layout_below="@+id/editText_show_here_test"
+        android:layout_alignLeft="@+id/editText_show_here_test"
+        android:layout_alignStart="@+id/editText_show_here_test"
+        android:layout_marginTop="31dp"
+        android:layout_alignRight="@+id/editText_show_here_test"
+        android:layout_alignEnd="@+id/editText_show_here_test"
+        android:text="Input here" />
 
 
 </RelativeLayout>

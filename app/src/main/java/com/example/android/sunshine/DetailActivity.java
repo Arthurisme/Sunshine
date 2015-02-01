@@ -21,6 +21,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.ShareActionProvider;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,6 +31,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -94,7 +97,7 @@ public class DetailActivity extends ActionBarActivity {
             }
 
             //------->button to test sharing
-            Button b = (Button)rootView.findViewById(R.id.button);
+            final Button b = (Button)rootView.findViewById(R.id.button_share_test);
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -102,6 +105,53 @@ public class DetailActivity extends ActionBarActivity {
                     startActivity(i);
                 }
             });
+
+            final Button B_show_here_test  = (Button)rootView.findViewById(R.id.button_show_here_test);
+            final EditText EText_show_here_test    = (EditText)rootView.findViewById(R.id.editText_show_here_test);
+            final EditText EText_input_output_test    = (EditText)rootView.findViewById(R.id.editText_input_output_test);
+
+            //text change listener
+            EText_input_output_test.addTextChangedListener(new TextWatcher() {
+                                                               @Override
+                                                               public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+                                                               }
+
+                                                               @Override
+                                                               public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                                                                   //String EText_show_here_test_gettest= String.valueOf(EText_input_output_test.getText());
+
+                                                                   EText_show_here_test.setText(s);
+                                                               }
+
+                                                               @Override
+                                                               public void afterTextChanged(Editable s) {
+
+                                                               }
+                                                           }
+
+
+
+
+            );
+
+            Button B_click_show_ok_test = (Button)rootView.findViewById(R.id.button_click_show_ok_test);
+            B_click_show_ok_test.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    B_show_here_test.setText("ok");
+                    EText_show_here_test.setText("ok");
+
+                    String EText_show_here_test_gettest= String.valueOf(EText_input_output_test.getText());
+                    // b.setText(EText_show_here_test_gettest);
+
+                }
+            });
+
+
+
 
             return rootView;
         }
