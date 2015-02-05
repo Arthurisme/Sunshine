@@ -10,10 +10,9 @@
     <string name="title_activity_main_activity2">MainActivity2</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="action_share">Share</string>
-
     <string name="text2">t2</string>
-    <string name="button_share_test">Share button Testing</string>>
-
+    <string name="button_share_test">Share button Testing</string>
+>
     <!-- Label for the location preference [CHAR LIMIT=30] -->
     <string name="pref_location_label">Location</string>
 
@@ -40,7 +39,9 @@
 
     <!-- Value in SharedPreferences for imperial temperature unit option [CHAR LIMIT=NONE] -->
     <string name="pref_units_imperial" translatable="false">imperial</string>
-
+    <string name="title_activity_new_function_test">NewFunctionTest</string>
+    <string name="action_new_function">New Function Test</string>
+    <string name="new_function_text">New Function Test Activity-This page is for</string>
 
 
 </resources>

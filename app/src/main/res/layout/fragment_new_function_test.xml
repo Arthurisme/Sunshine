@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.android.sunshine.NewFunctionTestActivity.NewFunctionFragment">
+
+    <TextView
+        android:text="@string/action_new_function"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/newfunction_text" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add a string to database"
+        android:id="@+id/button_add_database"
+        android:layout_below="@+id/newfunction_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="46dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show strings you typed"
+        android:id="@+id/button_show_database"
+        android:layout_below="@+id/button_toast_getData"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Of Alter"
+        android:id="@+id/button_alter_getData"
+        android:layout_below="@+id/button_add_database"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Of Toast"
+        android:id="@+id/button_toast_getData"
+        android:layout_below="@+id/button_alter_getData"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Of New View"
+        android:id="@+id/button_newview_getData"
+        android:layout_below="@+id/button_toast_getData"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Of Dialog"
+        android:id="@+id/button_dialog_getdata"
+        android:layout_alignTop="@+id/button_alter_getData"
+        android:layout_toRightOf="@+id/button_alter_getData"
+        android:layout_toEndOf="@+id/button_alter_getData" />
+
+
+</RelativeLayout>

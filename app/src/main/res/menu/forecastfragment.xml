@@ -10,6 +10,13 @@
 
     app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_new_function"
+        android:title="@string/action_new_function"
+
+
+        app:showAsAction="never" />
+
 
 
 

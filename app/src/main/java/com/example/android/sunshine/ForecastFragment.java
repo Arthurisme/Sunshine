@@ -99,6 +99,14 @@ public class ForecastFragment extends Fragment {
             return true;
         }
 
+        if (id == R.id.action_new_function) {
+            Intent intent = new Intent(getActivity(), NewFunctionTestActivity.class);
+            startActivity(intent);
+
+            return true;
+        }
+
+
         return super.onOptionsItemSelected(item);
     }
 
