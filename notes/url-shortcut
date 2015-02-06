@@ -1,3 +1,5 @@
 /data/data/com.example.android.sunshine/databases/weather.db
 
 C:\Users\Emilie\AppData\Local\Android\sdk\platform-tools
+
+CREATE TABLE tablename1 (string varchar(10));

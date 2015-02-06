@@ -57,7 +57,7 @@ public class NewFunctionTestActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class NewFunctionFragment extends Fragment {
+    public static class NewFunctionFragment extends Fragment  {
 
         //Context mContext;
 
@@ -143,7 +143,7 @@ public class NewFunctionTestActivity extends ActionBarActivity {
 
         private void showEditDialog() {
             FragmentManager fm = getFragmentManager();
-            EditNameDialog editNameDialog = new EditNameDialog();
+            GetStringToDataDialog editNameDialog = new GetStringToDataDialog();
             editNameDialog.show(fm, "fragment_edit_name");
         }
 

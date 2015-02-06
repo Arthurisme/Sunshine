@@ -24,6 +24,12 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+
+
+
+
+
+
         //    //Make sure you're using compile 'com.android.support:appcompat-v7:20.0.0' in your app/build.gradle otherwise the Material theme is applied and it doesn't have icon by default.
         //using floowing 3 lines to show app icon.
         getSupportActionBar().setDisplayShowHomeEnabled(true);
