@@ -61,24 +61,22 @@ public class NewFunctionTestActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class NewFunctionFragment extends Fragment  {
+    public static class NewFunctionFragment extends Fragment {
 
         //Context mContext;
 
         public NewFunctionFragment() {
         }
 
-        //tretrieving string from sqlite database to ShowdataActivity.class:
-        public String retrievingStringFromData()
-        {
+        //tretrieving string from sqlite database to ShowdataActivity.class:(not using dbHelper)
 
+        public String retrievingStringFromData() {
 
+            String DATABASE_NAME = "stringtodata4.db";
+            String TABLE_NAME = "Stringtest";
+            SQLiteDatabase sqliteDatabase = getActivity().openOrCreateDatabase(DATABASE_NAME, Context.MODE_WORLD_WRITEABLE, null);
 
-               String DATABASE_NAME = "stringtodata4.db";
-               String TABLE_NAME = "Stringtest";
-            SQLiteDatabase sqliteDatabase=getActivity().openOrCreateDatabase(DATABASE_NAME, Context.MODE_WORLD_WRITEABLE,null);
-
-            Cursor cursor=sqliteDatabase.query(TABLE_NAME,
+            Cursor cursor = sqliteDatabase.query(TABLE_NAME,
                     null,
                     null,
                     null,
@@ -90,29 +88,20 @@ public class NewFunctionTestActivity extends ActionBarActivity {
 
             cursor.moveToFirst();
             //String theColumn1=cursor.getString(0);
-            String dataToStringStr="";
-            String[] dataToStringArray=new String[cursor.getCount()];
+            String dataToStringStr = "";
+            String[] dataToStringArray = new String[cursor.getCount()];
 
-            for(int i=0;i<cursor.getCount();i++)
-            {
+            for (int i = 0; i < cursor.getCount(); i++) {
 
-                String theColumnValue=cursor.getString(0);
-                 dataToStringStr=dataToStringStr+"\n"+theColumnValue;
-                dataToStringArray[i]=theColumnValue;
+                String theColumnValue = cursor.getString(0);
+                dataToStringStr = dataToStringStr + "\n" + theColumnValue;
+                dataToStringArray[i] = theColumnValue;
                 cursor.moveToNext();
-
-
-
 
 
             }
 
-
-           // if(cursor.()){            }
-
-
-
-
+            // if(cursor.()){            }
 
             return dataToStringStr;
         }
@@ -171,7 +160,7 @@ public class NewFunctionTestActivity extends ActionBarActivity {
             );
 
             //show database on click the button:
-            Button b_button_show_database=(Button)rootView.findViewById(R.id.button_show_database);
+            Button b_button_show_database = (Button) rootView.findViewById(R.id.button_show_database);
 
             b_button_show_database.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -179,14 +168,15 @@ public class NewFunctionTestActivity extends ActionBarActivity {
 
                     //sava data to another intent:
 
-                    String   readStringFromDataString= retrievingStringFromData();
-                    Intent intentDataShowing=new Intent(getActivity(),ShowingDataActivity.class).putExtra(Intent.EXTRA_TEXT, readStringFromDataString);;
-                   // Intent intentDataShowing=new Intent(getActivity(),ShowingDataActivity.class).putExtra(Intent., readStringFromDataString);
+                    String readStringFromDataString = retrievingStringFromData();
+                    Intent intentDataShowing = new Intent(getActivity(), ShowingDataActivity.class).putExtra(Intent.EXTRA_TEXT, readStringFromDataString);
+                    ;
+                    // Intent intentDataShowing=new Intent(getActivity(),ShowingDataActivity.class).putExtra(Intent., readStringFromDataString);
 
                     startActivity(intentDataShowing);
 
                 }
-            }) ;
+            });
 
             //using onCreateDialog
 

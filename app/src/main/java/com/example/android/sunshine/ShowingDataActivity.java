@@ -1,11 +1,20 @@
 package com.example.android.sunshine;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ShowingDataActivity extends ActionBarActivity {
 
@@ -20,14 +29,55 @@ public class ShowingDataActivity extends ActionBarActivity {
         Intent intent=this.getIntent();
         String try1240=intent.getStringExtra(intent.EXTRA_TEXT);
 
+        //using dbhelper;
+        //Context mContext;
+        Context mContext = getApplicationContext();
+        String DATABASE_NAME = "stringtodata4.db";
+        String TABLE_NAME = "Stringtest";
+        SQLiteDatabase sqliteDatabase=new ReadDbHelper(mContext).getReadableDatabase();
+
+        Cursor cursor=sqliteDatabase.query(TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+
+        );
+
+        cursor.moveToFirst();
+        //String theColumn1=cursor.getString(0);
+        String dataToStringStr="";
+        String[] dataToStringArray=new String[cursor.getCount()];
+
+        for(int i=0;i<cursor.getCount();i++)
+        {
+
+            String theColumnValue=cursor.getString(0);
+            dataToStringStr=dataToStringStr+"\n"+theColumnValue;
+            dataToStringArray[i]=theColumnValue;
+            cursor.moveToNext();
+
+
+
+
+
+        }
+
+        List<String> StringList = new ArrayList<String>(Arrays.asList(dataToStringArray));
 
 
 
 
 
         //TextView textView =
-        ((TextView)findViewById(R.id.TextView_showData)).setText(try1240) ;
+                ((TextView) findViewById(R.id.TextView_showData)).setText(dataToStringStr) ;
+        ListView lw_listView_showData=(ListView)findViewById(R.id.listView_showData);
 
+        ArrayAdapter aa=new ArrayAdapter(this,R.layout.list_view_row_item,R.id.textViewItem,StringList);
+
+        lw_listView_showData.setAdapter(aa);
 
     }
 
