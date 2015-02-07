@@ -43,6 +43,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.android.sunshine.MainActivity" />
         </activity>
+        <activity
+            android:name=".ShowingDataActivity"
+            android:label="@string/title_activity_data_showing"
+            android:parentActivityName=".NewFunctionTestActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.sunshine.NewFunctionTestActivity" />
+        </activity>
     </application>
 
 </manifest>

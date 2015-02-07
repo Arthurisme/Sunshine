@@ -1,7 +1,11 @@
 package com.example.android.sunshine;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -64,6 +68,55 @@ public class NewFunctionTestActivity extends ActionBarActivity {
         public NewFunctionFragment() {
         }
 
+        //tretrieving string from sqlite database to ShowdataActivity.class:
+        public String retrievingStringFromData()
+        {
+
+
+
+               String DATABASE_NAME = "stringtodata4.db";
+               String TABLE_NAME = "Stringtest";
+            SQLiteDatabase sqliteDatabase=getActivity().openOrCreateDatabase(DATABASE_NAME, Context.MODE_WORLD_WRITEABLE,null);
+
+            Cursor cursor=sqliteDatabase.query(TABLE_NAME,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+
+            );
+
+            cursor.moveToFirst();
+            //String theColumn1=cursor.getString(0);
+            String dataToStringStr="";
+            String[] dataToStringArray=new String[cursor.getCount()];
+
+            for(int i=0;i<cursor.getCount();i++)
+            {
+
+                String theColumnValue=cursor.getString(0);
+                 dataToStringStr=dataToStringStr+"\n"+theColumnValue;
+                dataToStringArray[i]=theColumnValue;
+                cursor.moveToNext();
+
+
+
+
+
+            }
+
+
+           // if(cursor.()){            }
+
+
+
+
+
+            return dataToStringStr;
+        }
+
 
         public void alter_dialog_getdata() {
 
@@ -117,6 +170,24 @@ public class NewFunctionTestActivity extends ActionBarActivity {
                                                     }
             );
 
+            //show database on click the button:
+            Button b_button_show_database=(Button)rootView.findViewById(R.id.button_show_database);
+
+            b_button_show_database.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //sava data to another intent:
+
+                    String   readStringFromDataString= retrievingStringFromData();
+                    Intent intentDataShowing=new Intent(getActivity(),ShowingDataActivity.class).putExtra(Intent.EXTRA_TEXT, readStringFromDataString);;
+                   // Intent intentDataShowing=new Intent(getActivity(),ShowingDataActivity.class).putExtra(Intent., readStringFromDataString);
+
+                    startActivity(intentDataShowing);
+
+                }
+            }) ;
+
             //using onCreateDialog
 
             Button b_button_dialog_getdata = (Button) rootView.findViewById(R.id.button_dialog_getdata);
@@ -143,8 +214,8 @@ public class NewFunctionTestActivity extends ActionBarActivity {
 
         private void showEditDialog() {
             FragmentManager fm = getFragmentManager();
-            GetStringToDataDialog editNameDialog = new GetStringToDataDialog();
-            editNameDialog.show(fm, "fragment_edit_name");
+            SavingStringToDataDialog editNameDialog = new SavingStringToDataDialog();
+            editNameDialog.show(fm, "fragment_getstring");
         }
 
 

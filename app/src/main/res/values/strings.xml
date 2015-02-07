@@ -12,8 +12,7 @@
     <string name="action_share">Share</string>
     <string name="text2">t2</string>
     <string name="button_share_test">Share button Testing</string>
->
-    <!-- Label for the location preference [CHAR LIMIT=30] -->
+>    <!-- Label for the location preference [CHAR LIMIT=30] -->
     <string name="pref_location_label">Location</string>
 
     <!-- Key name for storing location in SharedPreferences [CHAR LIMIT=NONE] -->
@@ -42,6 +41,6 @@
     <string name="title_activity_new_function_test">NewFunctionTest</string>
     <string name="action_new_function">New Function Test</string>
     <string name="new_function_text">New Function Test Activity-This page is for</string>
-
+    <string name="title_activity_data_showing">DataShowingActivity</string>
 
 </resources>
