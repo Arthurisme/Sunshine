@@ -1,4 +1,4 @@
-package com.example.android.sunshine;
+package com.example.android.sunshine.mynewfunctiontest;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

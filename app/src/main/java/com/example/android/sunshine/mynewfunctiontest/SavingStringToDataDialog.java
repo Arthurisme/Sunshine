@@ -1,4 +1,4 @@
-package com.example.android.sunshine;
+package com.example.android.sunshine.mynewfunctiontest;
 
 /**
  * Created by Emilie on 2015-02-04.
@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.android.sunshine.R;
+
 //import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 // ...
 
@@ -25,8 +27,10 @@ public class SavingStringToDataDialog extends DialogFragment {
     private EditText mEditText;
     private Button mButton_GetStringFinished;
 
-    public static final String DATABASE_NAME = "stringtodata4.db";
-    public static final String TABLE_NAME = "Stringtest";
+
+    static namespaces ns=new namespaces();
+    static String fDATABASE_NAME =ns.DATABASE_NAME();
+    static String fTABLE_NAME=ns.TABLE_NAME();
 
 
     public SavingStringToDataDialog() {
@@ -46,18 +50,19 @@ public class SavingStringToDataDialog extends DialogFragment {
         //String stringinsertStr =((EditText) view.findViewById(R.id.txt_your_string)).getText().toString();
 
         try {
-            String SQL_CREAT_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
+            String SQL_CREAT_TABLE = "CREATE TABLE IF NOT EXISTS " + fTABLE_NAME +
+                    " (" +
 
                     "STRING" + " varchar(10) " +
                     " );";
 
             Log.v("1239", "sql string 1239: " + SQL_CREAT_TABLE);
 
-            String insertstringtodatabase = "insert into " + TABLE_NAME + "   values( ' " + stringinsertStr + " ');";
+            String insertstringtodatabase = "insert into " + fTABLE_NAME + "   values( ' " + stringinsertStr + " ');";
             Log.v("1239", "sql string 1239: " + insertstringtodatabase);
 
             SQLiteDatabase sqLiteDatabase
-             = getActivity().openOrCreateDatabase(DATABASE_NAME, Context.MODE_WORLD_WRITEABLE, null);
+             = getActivity().openOrCreateDatabase(fDATABASE_NAME, Context.MODE_WORLD_WRITEABLE, null);
 
             sqLiteDatabase.execSQL(SQL_CREAT_TABLE);
 

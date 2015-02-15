@@ -1,4 +1,4 @@
-package com.example.android.sunshine;
+package com.example.android.sunshine.mynewfunctiontest;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.android.sunshine.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +21,9 @@ import java.util.List;
 public class ShowingDataActivity extends ActionBarActivity {
 
 
-
+    static namespaces ns=new namespaces();
+    static String fDATABASE_NAME =ns.DATABASE_NAME();
+    static String fTABLE_NAME=ns.TABLE_NAME();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +36,10 @@ public class ShowingDataActivity extends ActionBarActivity {
         //using dbhelper;
         //Context mContext;
         Context mContext = getApplicationContext();
-        String DATABASE_NAME = "stringtodata4.db";
-        String TABLE_NAME = "Stringtest";
+
         SQLiteDatabase sqliteDatabase=new ReadDbHelper(mContext).getReadableDatabase();
 
-        Cursor cursor=sqliteDatabase.query(TABLE_NAME,
+        Cursor cursor=sqliteDatabase.query(fTABLE_NAME,
                 null,
                 null,
                 null,

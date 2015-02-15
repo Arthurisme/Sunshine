@@ -1,4 +1,4 @@
-package com.example.android.sunshine;
+package com.example.android.sunshine.mynewfunctiontest;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,21 +8,29 @@ import com.example.android.sunshine.data.WeatherContract;
 
 /**
  * Created by Emilie on 2015-02-06.
+ * this class is not using by new function test yet! just prepare for future
  */
 public class RetrievingStringFromData extends SQLiteOpenHelper  {
 
+
+
     private static final int DATABASE_VERSION = 1;
 
-    public static final String DATABASE_NAME = "stringtodata4.db";
-    public static final String TABLE_NAME = "Stringtest";
+
+
+    static namespaces ns=new namespaces();
+    static String fDATABASE_NAME =ns.DATABASE_NAME();
+    static String fTABLE_NAME=ns.TABLE_NAME();
+
+
 
     public RetrievingStringFromData(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, fDATABASE_NAME, null, DATABASE_VERSION);
     }
 
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        final String SQL_CREATE_STRING_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
+        final String SQL_CREATE_STRING_TABLE = "CREATE TABLE IF NOT EXISTS " + fTABLE_NAME + " (" +
 
                 "STRING" + " varchar(10) " +
                 " );";

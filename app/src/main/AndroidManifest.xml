@@ -36,7 +36,7 @@
                 android:value="com.example.android.sunshine.MainActivity" />
         </activity>
         <activity
-            android:name=".NewFunctionTestActivity"
+            android:name=".mynewfunctiontest.NewFunctionTestActivity"
             android:label="@string/title_activity_new_function_test"
             android:parentActivityName=".MainActivity" >
             <meta-data
@@ -44,13 +44,23 @@
                 android:value="com.example.android.sunshine.MainActivity" />
         </activity>
         <activity
-            android:name=".ShowingDataActivity"
+            android:name=".mynewfunctiontest.ShowingDataActivity"
             android:label="@string/title_activity_data_showing"
-            android:parentActivityName=".NewFunctionTestActivity" >
+            android:parentActivityName=".mynewfunctiontest.NewFunctionTestActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.android.sunshine.NewFunctionTestActivity" />
+                android:value=".mynewfunctiontest.NewFunctionTestActivity" />
         </activity>
+
+
+
+        <provider
+            android:authorities="com.example.android.sunshine"
+            android:name=".data.WeatherProvider"
+            />
+
+
+
     </application>
 
 </manifest>

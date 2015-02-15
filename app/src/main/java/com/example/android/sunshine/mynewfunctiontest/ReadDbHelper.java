@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.sunshine;
+package com.example.android.sunshine.mynewfunctiontest;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,25 +22,38 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.android.sunshine.data.WeatherContract.LocationEntry;
 import com.example.android.sunshine.data.WeatherContract.WeatherEntry;
 
+
+
 /**
  * Manages a local database for weather data.
  */
 public class ReadDbHelper extends SQLiteOpenHelper {
 
     // If you change the database schema, you must increment the database version.
-    private static final int DATABASE_VERSION = 1;
 
-    public static final String DATABASE_NAME = "stringtodata4.db";
-    public static final String TABLE_NAME = "Stringtest";
+
+
+    private static final int DATABASE_VERSION = 1;
+    //static namespaces ns=new namespaces();
+    static String fDATABASE_NAME =namespaces.DATABASE_NAME;
+    static String fTABLE_NAME=namespaces.TABLE_NAME;
+
+    //String gDATABASE_NAME = "stringtodata4.db";
+
+
+
+    //public static final String DATABASE_NAME = "stringtodata4.db";
+    //public static final String TABLE_NAME = "Stringtest";
 
     public ReadDbHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
+        super(context, fDATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        final String SQL_CREATE_STRING_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
+        final String SQL_CREATE_STRING_TABLE = "CREATE TABLE IF NOT EXISTS " + fTABLE_NAME + " (" +
 
                 "STRING" + " varchar(10) " +
                 " );";

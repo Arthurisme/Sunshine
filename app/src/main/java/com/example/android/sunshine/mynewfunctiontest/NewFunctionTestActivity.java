@@ -1,4 +1,4 @@
-package com.example.android.sunshine;
+package com.example.android.sunshine.mynewfunctiontest;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -19,8 +19,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.android.sunshine.R;
+
+/*For some new idea or new function i want to impletion,this
+
+    class is build.*/
+
 
 public class NewFunctionTestActivity extends ActionBarActivity {
+
+    static namespaces ns=new namespaces();
+    static String fDATABASE_NAME =ns.DATABASE_NAME();
+    static String fTABLE_NAME=ns.TABLE_NAME();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,13 +80,14 @@ public class NewFunctionTestActivity extends ActionBarActivity {
 
         //tretrieving string from sqlite database to ShowdataActivity.class:(not using dbHelper)
 
+
+
         public String retrievingStringFromData() {
 
-            String DATABASE_NAME = "stringtodata4.db";
-            String TABLE_NAME = "Stringtest";
-            SQLiteDatabase sqliteDatabase = getActivity().openOrCreateDatabase(DATABASE_NAME, Context.MODE_WORLD_WRITEABLE, null);
 
-            Cursor cursor = sqliteDatabase.query(TABLE_NAME,
+            SQLiteDatabase sqliteDatabase = getActivity().openOrCreateDatabase(fDATABASE_NAME, Context.MODE_WORLD_WRITEABLE, null);
+
+            Cursor cursor = sqliteDatabase.query(fTABLE_NAME,
                     null,
                     null,
                     null,
@@ -102,6 +113,9 @@ public class NewFunctionTestActivity extends ActionBarActivity {
             }
 
             // if(cursor.()){            }
+            sqliteDatabase.close();
+            cursor.close();
+
 
             return dataToStringStr;
         }
